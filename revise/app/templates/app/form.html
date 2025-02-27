@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="text-center alert alert-success">form page</h1>
+    <div class="container">
+        <div class="row  mx-auto">
+            <div class="col-8">
+                <form method="POST" action="{% url 'form' %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                      <label for="exampleInputname1">FullName</label>
+                      <input type="text" class="form-control" id="exampleInputname1" aria-describedby="emailHelp" name="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1"    
+                        name="email"   aria-describedby="emailHelp">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputimage1">Images</label>
+                        <input type="image" class="form-control" id="exampleInputimage1" aria-describedby="emailHelp" name="images">
+                      </div>
+            
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
