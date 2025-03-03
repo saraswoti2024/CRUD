@@ -1,0 +1,7 @@
+##image is compulsory to upload? in order to get inside if statement?
+##why UI error message ma model ko name show gareko , we want to show label name?
+###first image with .bmp extension not showing?
+
+##Read
+
+##update

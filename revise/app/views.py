@@ -29,3 +29,9 @@ def form(request):
 ####UPDATE
 def edit(request):
     return render(request,'app/edit.html')
+
+
+
+######delete
+def delete(request,id):
+    return render(request,'app/delete.html')
