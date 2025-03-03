@@ -1,21 +1,31 @@
 from django.shortcuts import render,redirect
 from .models import *
+from django.contrib import messages
 
 # Create your views here.
 def home(request):
-    return render(request,"app/home.html")
+    user = formfill.objects.all()
+    return render(request,"app/home.html",{'datauser': user})
 
 def form(request):
-    if request.method=='POST':
+    if request.method=='POST' and request.FILES: ##file chahi halnai parxa ani matra if statement ma xirxa
         name = request.POST.get('name')
         email = request.POST.get('email')
-        image = request.POST.get('images')
+        image = request.FILES.get('images')
+        check = request.POST.get('checkname')=='on'
 
         try:
-            user = formfill(namemodel=name,emailmodel=email,imagemodel=image)
+            user = formfill(namemodel=name,emailmodel=email,imagemodel=image,checkmodel=check)
             user.full_clean()
             user.save()
+            messages.success(request,'form submitted successfully')
             return redirect('form')
         except Exception as e:
+            messages.error(request,f'{str(e)}')
             return redirect('form')
+
     return render(request,"app/form.html")
+
+####UPDATE
+def edit(request):
+    return render(request,'app/edit.html')
