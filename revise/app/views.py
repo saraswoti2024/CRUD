@@ -35,7 +35,25 @@ def form(request):
 
 ####UPDATE################
 def edit(request,id):
-    return render(request,'app/edit.html')
+    data = formfill.objects.get(id=id)
+    if request.method=='POST' and request.FILES:
+         data = formfill.objects.get(id=id)
+         data.namemodel = request.POST['name']
+         data.emailmodel = request.POST['email']
+         if 'images' in request.FILES:
+            data.imagemodel = request.FILES['images']
+         if 'videos' in request.FILES:
+            data.videomodel = request.FILES['videos']
+         data.checkmodel = request.POST.get('checkname')=='on'
+         try:
+            data.full_clean()
+            data.save()
+            messages.success(request,'updated successfully')
+            return redirect('home')
+         except Exception as e:
+             messages.error(request,f'{str(e)} TRY AGAIN')  
+             return redirect('home')     
+    return render(request,'app/edit.html',{'data':data})
 
 ######delete##################
 def delete(request,id):
@@ -56,7 +74,6 @@ def restore_all(request):
 
 def delete_all(request):
     formfill.objects.filter(isdelete=True).update(isdelete2=True)
-
     # Redirect to the recycle bin to see the changes
     return redirect('recycle')
     

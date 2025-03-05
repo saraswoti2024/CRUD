@@ -9,5 +9,6 @@ urlpatterns = [
     path('delete/<int:id>',delete,name="delete"),
     path('restore_all/',restore_all,name="restore_all"),
      path('delete_all/',delete_all,name="delete_all"),
-    path('recycle/',recycle,name="recycle")
+    path('recycle/',recycle,name="recycle"),
+    path('edit/ <int:id>',edit,name="edit"),
 ]

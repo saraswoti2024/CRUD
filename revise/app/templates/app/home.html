@@ -12,8 +12,14 @@
 <body>
     <h1 class="alert alert-success">Data Show</h1>
     <div class="container">
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-{{message.tags}}">{{message}}</div>
+      {% endfor %}
+    {% endif %}
         <div class="row mx-auto">
             <div class="col-10 alert alert-success">
+
                 <table class="table">
                     <thead>
                       
