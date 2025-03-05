@@ -8,6 +8,7 @@ class formfill(models.Model):
     videomodel = models.FileField(upload_to="video",null=True)
     checkmodel = models.BooleanField(default=False)
     isdelete = models.BooleanField(default=False)
+    isdelete2 = models.BooleanField(default=False,null=True)
 
     def __str__(self):
         return f"{self.namemodel} - {self.emailmodel} - {'Checked' if self.checkmodel else 'Not Checked'}"

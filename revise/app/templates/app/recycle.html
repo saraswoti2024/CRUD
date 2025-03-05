@@ -15,8 +15,7 @@
         <div class="row mx-auto">
             <div class="col-10 alert alert-success">
                 <table class="table">
-                    <thead>
-                      
+                    <thead>                      
                       <tr>
                         <th scope="col">id</th>
                         <th scope="col">Name</th>
@@ -64,26 +63,25 @@
                             <button class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#{{i.id}}"> Delete</button>
 
            <!-- modal section -->
-
-<div class="modal fade" id="{{i.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="{{i.id}}">Delete</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <form action="{% url 'delete' i.id %}">
-        <div class="modal-body">
-          Are You Sure You Want To Delete?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-danger">Delete</button></a>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
+           <div class="modal fade" id="{{i.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="{{i.id}}">Delete</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="{% url 'delete' i.id %}">
+                  <div class="modal-body">
+                    Are You Sure You Want To Delete?
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger">Delete</button></a>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
   <!-- modal ends -->
                         </td>
                       </tr>
@@ -93,5 +91,11 @@
                       </div>
                     </div>
                     </div>
+                    <form action="{% url 'restore_all' %}">
+                      <button class="btn btn-primary">Restore All</button>
+                      </form>
+                      <form action="{% url 'delete_all' %}">
+                        <button class="btn btn-danger">Delete All</button>
+                        </form>
                     </body>
                     </html>
