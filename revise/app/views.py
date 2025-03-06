@@ -14,7 +14,7 @@ def home(request):
 
 ########Create###############3
 def form(request):
-    if request.method=='POST' and request.FILES: ##file chahi halnai parxa ani matra if statement ma xirxa
+    if request.method=='POST' or request.FILES: ##file chahi halnai parxa ani matra if statement ma xirxa
         name = request.POST.get('name')
         email = request.POST.get('email')
         image = request.FILES.get('images')
@@ -35,8 +35,8 @@ def form(request):
 
 ####UPDATE################
 def edit(request,id):
-    data = formfill.objects.get(id=id)
-    if request.method=='POST' and request.FILES:
+    data = formfill.objects.get(id=id) #3
+    if request.method=='POST' or request.FILES:
          data = formfill.objects.get(id=id)
          data.namemodel = request.POST['name']
          data.emailmodel = request.POST['email']
@@ -44,7 +44,8 @@ def edit(request,id):
             data.imagemodel = request.FILES['images']
          if 'videos' in request.FILES:
             data.videomodel = request.FILES['videos']
-         data.checkmodel = request.POST.get('checkname')=='on'
+         if 'checkname' in request.POST:
+            data.checkmodel = request.POST.get('checkname')=='on'
          try:
             data.full_clean()
             data.save()
